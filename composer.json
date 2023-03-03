@@ -1,0 +1,49 @@
+{
+    "name": "Shetza/silverstripe-simple-geotools",
+    "description": "Geo tools for SilverStripe",
+    "type": "silverstripe-vendormodule",
+    "keywords": [
+        "silverstripe",
+        "module",
+        "cms",
+        "geolocalisation",
+        "leaflet"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shetza",
+            "email": "unknownshetza@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "silverstripe/framework": "^4.11"
+    },
+    "extra": {
+        "installer-name": "simple-geotools",
+        "expose": [
+            "css",
+            "javascript",
+            "leaflet"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Shetza\\SimpleGeoTools\\": "src/",
+            "Shetza\\SimpleGeoTools\\Test\\": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/todo/issues"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/recipe-plugin": true,
+            "silverstripe/vendor-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

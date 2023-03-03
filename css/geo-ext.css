@@ -1,0 +1,5 @@
+.geo-ext fieldset { display: flex; flex-flow: row wrap; }
+.geo-ext fieldset > div { flex: 1; margin-left: 0 !important; margin-right: 0 !important; }
+.geo-ext fieldset > div > div { padding: 0 !important; }
+.geo-ext fieldset > div:not(.break) + div { margin-left: 10px !important; }
+.geo-ext .break { flex-basis: 100%; }
