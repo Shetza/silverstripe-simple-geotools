@@ -1,5 +1,5 @@
 {
-    "name": "Shetza/silverstripe-simple-geotools",
+    "name": "shetza/silverstripe-simple-geotools",
     "description": "Geo tools for SilverStripe",
     "type": "silverstripe-vendormodule",
     "keywords": [
