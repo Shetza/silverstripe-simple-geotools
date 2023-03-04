@@ -36,7 +36,7 @@
         }
     },
     "support": {
-        "issues": "https://github.com/todo/issues"
+        "issues": "https://github.com/Shetza/silverstripe-simple-geotools/issues"
     },
     "config": {
         "allow-plugins": {
