@@ -37,11 +37,11 @@ class SimpleGeoExtension extends GeoExtension
     	];
 
     	if ($this->owner->Latitude && $this->owner->Longitude) {
-        	Requirements::css('simple-geotools/leaflet/leaflet.css');
-        	Requirements::javascript('simple-geotools/leaflet/leaflet.js');
-            Requirements::css('simple-geotools/css/geo-ext.css');
-            Requirements::javascript('simple-geotools/javascript/geo-ext.js');
-
+            Requirements::css('shetza/silverstripe-simple-geotools:leaflet/leaflet.css');
+            Requirements::javascript('shetza/silverstripe-simple-geotools:leaflet/leaflet.js');
+            Requirements::css('shetza/silverstripe-simple-geotools:css/geo-ext.css');
+            Requirements::javascript('shetza/silverstripe-simple-geotools:javascript/geo-ext.js');
+		
             $arr[] = LiteralField::create('Break'. (++self::$breaks), '<div class="break"></div>');
             $arr[] = LiteralField::create('Leaflet', '<div id="geo-map" style="width: 100%; height: 300px;"></div>');
     	}
