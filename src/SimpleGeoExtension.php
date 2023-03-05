@@ -60,7 +60,7 @@ class SimpleGeoExtension extends GeoExtension
         if (GeoExtension::$disable_auto_geocode) {
             return false;
         }
-        if (!$this->owner->Latitude) {
+        if (!$this->owner->Latitude && $this->owner->StreetName && $this->owner->Locality && $this->owner->CountryCode) {
             $service = new GeocodeXyz;
             $address = $this->owner->StreetNumber .', '. $this->owner->StreetName .', '. $this->owner->Locality .', '. $this->owner->getCountryName();
             if ($result = $service->geocode($address)) {
