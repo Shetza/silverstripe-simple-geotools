@@ -1,5 +1,7 @@
 # silverstripe-simple-geotools
 
+composer requirements :
+
 ```
 {
     ...
@@ -14,4 +16,9 @@
     },
     ...
 }
+```
+
+to disable auto geocode (in app/_config.php):
+```
+LeKoala\GeoTools\GeoExtension::$disable_auto_geocode = true;
 ```
