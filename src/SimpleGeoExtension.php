@@ -13,6 +13,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\View\Requirements;
 use LeKoala\GeoTools\GeoExtension;
 use LeKoala\GeoTools\Fields\CountryDropdownField;
+use LeKoala\GeoTools\Services\GeocodeXyz;
 
 class SimpleGeoExtension extends GeoExtension
 {
@@ -51,5 +52,22 @@ class SimpleGeoExtension extends GeoExtension
     			->setTag('fieldset')
     			->setLegend(_t(get_class($this->owner) .'.Address', _t('Geo.Address', "Adresse")))
     			->addExtraClass('geo-ext'));
+    }
+
+    public function onBeforeWrite()
+    {
+        // Auto geocoding
+        if (GeoExtension::$disable_auto_geocode) {
+            return false;
+        }
+        if (!$this->owner->Latitude) {
+            $service = new GeocodeXyz;
+            $address = $this->owner->StreetNumber .', '. $this->owner->StreetName .', '. $this->owner->Locality .', '. $this->owner->getCountryName();
+            if ($result = $service->geocode($address)) {
+                \Log::info([__CLASS__, $address, print_r($result, true)]);
+                $this->owner->Latitude = $result->getCoordinates()->getLatitude();
+                $this->owner->Longitude = $result->getCoordinates()->getLongitude();
+            }
+        }
     }
 }
