@@ -64,7 +64,6 @@ class SimpleGeoExtension extends GeoExtension
             $service = new GeocodeXyz;
             $address = $this->owner->StreetNumber .', '. $this->owner->StreetName .', '. $this->owner->Locality .', '. $this->owner->getCountryName();
             if ($result = $service->geocode($address)) {
-                \Log::info([__CLASS__, $address, print_r($result, true)]);
                 $this->owner->Latitude = $result->getCoordinates()->getLatitude();
                 $this->owner->Longitude = $result->getCoordinates()->getLongitude();
             }
