@@ -15,6 +15,11 @@ use LeKoala\GeoTools\GeoExtension;
 use LeKoala\GeoTools\Fields\CountryDropdownField;
 use LeKoala\GeoTools\Services\GeocodeXyz;
 
+/**
+ * SimpleGeoExtension
+ *
+ * @author Shetza <unknownshetza@gmail.com>
+ */
 class SimpleGeoExtension extends GeoExtension
 {
 	private static $geofields = [
@@ -69,4 +74,24 @@ class SimpleGeoExtension extends GeoExtension
             }
         }
     }
+
+    public function toLeafletMapItem()
+    {
+        $item = new LeafletMapItem;
+        $item->lat = $this->owner->Latitude;
+        $item->lon = $this->owner->Longitude;
+        if ($this->owner->hasMethod('getLeafletPopup')) {
+            $item->popup = $this->owner->getLeafletPopup();
+        } else {
+            $item->popup = $this->owner->Title;
+        }
+        return $item;
+    }
+}
+
+class LeafletMapItem
+{
+    public $lat;
+    public $lon;
+    public $popup; // Title by default or use getLeafletPopup method
 }
