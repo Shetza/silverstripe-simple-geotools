@@ -30,7 +30,7 @@ class MapPageController extends Extension
         'forMap',
     ];
 
-    public function map()
+    public static function MapRequirements()
     {
         Requirements::css('shetza/silverstripe-simple-geotools:leaflet/leaflet.css');
         Requirements::javascript('shetza/silverstripe-simple-geotools:leaflet/leaflet.js');
@@ -52,15 +52,14 @@ var _leafletAttribution = '$tileAttribution';
 JS
         , 'LeafletVars');
         Requirements::javascript('shetza/silverstripe-simple-geotools:javascript/map.js');
-
-        return $this->owner;
     }
 
     /**
      * Return HTML code to be included in SS template in order to build map.
      */
-    public function mapBuilder()
+    public function MapBuilder()
     {
+        self::MapRequirements();
         $options = '';
 
         // @TODO define map-$ID as id to may use multiple maps
