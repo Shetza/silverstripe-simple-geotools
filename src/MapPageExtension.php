@@ -70,7 +70,8 @@ JS
 
     public function forMapLink()
     {
-        return $this->owner->Link('forMap?_d='. date('YmdHis'));
+        $vars = array_merge($this->owner->request->getVars(), ['_d' => date('YmdHis')]);
+        return $this->owner->Link('forMap?'. http_build_query($vars));
     }
 
     /**
@@ -159,6 +160,6 @@ JS
 
     public function Items()
     {
-        throw new Exception("Owner must implement this method that return a list of DataObject");
+        throw new \Exception("Owner must implement this method that return a list of DataObject");
     }
 }
