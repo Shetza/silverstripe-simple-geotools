@@ -85,6 +85,10 @@ class SimpleGeoExtension extends GeoExtension
         } else {
             $item->popup = $this->owner->Title;
         }
+        if ($this->owner->hasMethod('getLeafletColor')) {
+            $color = $this->owner->getLeafletColor();
+            $item->color = $color;
+        }
         return $item;
     }
 }

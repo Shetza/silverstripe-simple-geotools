@@ -63,7 +63,22 @@ jQuery.noConflict();
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
             var point = [item.lat, item.lon];
-            var marker = L.marker(point);
+            let marker = null;
+
+            // https://github.com/pointhi/leaflet-color-markers
+            if (item.color) {
+                let icon = new L.Icon({
+                    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-'+ item.color +'.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+                marker = L.marker(point, {icon: icon});
+            } else {
+                marker = L.marker(point);
+            }
 
             // Map markers clustering (group markers)
             if (clustering) {
